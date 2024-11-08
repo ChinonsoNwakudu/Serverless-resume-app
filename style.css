@@ -1,57 +1,89 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: #f9fafb;
+    color: #333;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
-    max-width: 900px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: auto;
+    background: #ffffff;
+    padding: 25px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
+/* Header section */
 header {
     text-align: center;
-    padding-bottom: 20px;
-}
-
-header h1 {
-    font-size: 2.5em;
-    color: #333;
-}
-
-header p {
-    font-size: 1.2em;
-    color: #666;
-}
-
-section {
     margin-bottom: 20px;
 }
 
-section h2 {
-    font-size: 1.8em;
+header h1 {
+    font-size: 2.2em;
+    margin: 0;
     color: #333;
-    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1em;
+    color: #666;
+    margin: 5px 0;
+}
+
+header a {
+    color: #0073e6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Section headers */
+section h2 {
+    color: #0056b3;
+    font-size: 1.4em;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    margin: 20px 0 15px;
+}
+
+/* Job and project styling */
+.job, .project {
+    margin-bottom: 15px;
+}
+
+.job h3, .project strong {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+}
+
+.job p, .project p {
+    font-size: 1em;
+    color: #555;
 }
 
 ul {
-    list-style-type: none;
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 10px;
 }
 
 ul li {
-    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: #444;
+    line-height: 1.5;
 }
 
+/* Link styling */
 a {
     color: #0073e6;
     text-decoration: none;
@@ -61,13 +93,26 @@ a:hover {
     text-decoration: underline;
 }
 
-.experience div {
-    margin-bottom: 15px;
+/* Sub-section styling for better visual hierarchy */
+section p {
+    margin: 5px 0;
+    color: #555;
 }
 
-.footer {
-    text-align: center;
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 20px;
+section ul {
+    margin-top: 10px;
+}
+
+section ul li {
+    margin-bottom: 8px;
+}
+
+/* Add subtle dividers between sections */
+section {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+section:last-child {
+    border-bottom: none;
 }
