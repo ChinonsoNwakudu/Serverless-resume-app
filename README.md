@@ -7,7 +7,7 @@ My personal resume website using serverless technologies, with backend APIs to f
 My frontend folder contains my static website. The static resume website is built using HTML and CSS. It is hosted on Azure Blob Storage with static website hosting enabled.
 
 ### Steps to Deploy:
-1. Created a storage account in Azure.
+1. Created a storage account in [Azure](https://aka.ms/azureportal).
 2. Enabled static website hosting.
 3. Uploaded my frontend files: `index.html`, `main.js` and `css files` to the `$web` container.
 4. Accessed the website using the **Primary Endpoint URL**.
