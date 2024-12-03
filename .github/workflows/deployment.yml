@@ -14,11 +14,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Disable Oryx Build (optional)
+      - name: Login to Azure
+        run: |
+          az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} \
+          -p ${{ secrets.AZURE_CLIENT_SECRET }} \
+          --tenant ${{ secrets.AZURE_TENANT_ID }}
+      
       - name: Disable Oryx Build
         run: |
-          az webapp config appsettings set --name nonsoresumeapp --resource-group resumeresourcegroup --settings ENABLE_ORYX_BUILD=false   
-
+          az webapp config appsettings set \
+          --name nonsoresumeapp \
+          --resource-group resumeresourcegroup \
+          --settings ENABLE_ORYX_BUILD=false
+      
       # Deploy Azure Function App
       - name: Deploy Azure Function App
         uses: Azure/functions-action@v1
