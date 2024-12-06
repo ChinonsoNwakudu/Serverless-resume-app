@@ -32,5 +32,5 @@ jobs:
           az webapp deploy \
             --resource-group resumeresourcegroup \
             --name nonsoresumeapp \
-            --src "$(pwd)/functionapp.zip"
+            --src-path "$(pwd)/functionapp.zip"\
             --type zip
