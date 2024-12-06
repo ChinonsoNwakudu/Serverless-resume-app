@@ -202,3 +202,4 @@ __queuestorage__
 __azurite_db*__.json
 .python_packages
 >>>>>>> function app files and CI/CD pipeline
+functionapp.zip
