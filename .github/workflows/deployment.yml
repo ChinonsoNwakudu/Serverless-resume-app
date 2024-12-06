@@ -26,17 +26,10 @@ jobs:
         run: |
           az webapp config appsettings set --name nonsoresumeapp --resource-group resumeresourcegroup --settings ENABLE_ORYX_BUILD=false   
       
-      - name: Validate File Path
+     # Create Deployment Package
+      - name: Create Deployment Package
         run: |
-            if [ ! -f "/Users/user/Documents/Severless_Resume_Application/functionapp.zip" ]; then
-              echo "File not found!"
-              exit 1
-            fi
-             
-      - name: Validate Deployment File
-        run: | 
-          ls -l /Users/user/Documents/Severless_Resume_Application/functionapp.zip
-           chmod 644 /Users/user/Documents/Severless_Resume_Application/functionapp.zip
+          zip -r functionapp.zip .
 
       # Deploy Azure Function App
       - name: Deploy Azure Function App
@@ -44,6 +37,6 @@ jobs:
           az webapp deploy \
             --resource-group resumeresourcegroup \
             --name nonsoresumeapp \
-            --src-path "/Users/user/Documents/Severless_Resume_Application/functionapp.zip" \
+            --src-path "$(pwd)/functionapp.zip" \
             --type zip \
             --debug
