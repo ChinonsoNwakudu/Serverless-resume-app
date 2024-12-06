@@ -32,5 +32,6 @@ jobs:
           az webapp deploy \
             --resource-group resumeresourcegroup \
             --name nonsoresumeapp \
-            --src-path "$(pwd)/functionapp.zip"\
-            --type zip
+            --src-path "/Users/user/Documents/Severless_Resume_Application/functionapp.zip" \
+            --type zip \
+            --debug
