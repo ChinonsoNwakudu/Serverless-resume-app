@@ -33,4 +33,4 @@ jobs:
           az webapp deployment source config-zip \
             --resource-group resumeresourcegroup \
             --name nonsoresumeapp \
-            --src-path ./functionapp.zip
+            --src ./functionapp.zip
