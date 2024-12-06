@@ -33,7 +33,11 @@ jobs:
               exit 1
             fi
              
-      
+      - name: Validate Deployment File
+        run: | 
+          ls -l /Users/user/Documents/Severless_Resume_Application/functionapp.zip
+           chmod 644 /Users/user/Documents/Severless_Resume_Application/functionapp.zip
+
       # Deploy Azure Function App
       - name: Deploy Azure Function App
         run: |
