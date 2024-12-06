@@ -30,7 +30,9 @@ jobs:
       - name: Deploy Azure Function App
         run: |
           zip -r functionapp.zip .
+          echo "Deploying functionapp.zip at path: $(pwd)/functionapp.zip"
+          ls -lh $(pwd)/functionapp.zip  # Check if the zip file was created
           az webapp deployment source config-zip \
             --resource-group resumeresourcegroup \
             --name nonsoresumeapp \
-            --src ./functionapp.zip
+            --src $(pwd)/functionapp.zip
