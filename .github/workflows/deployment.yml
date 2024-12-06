@@ -1,4 +1,4 @@
-name: Deploy Application to Azure
+name: Deploy Function App to Azure
 
 on:
   push:
@@ -14,12 +14,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Login to Azure
       - name: Login to Azure
         run: |
           az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} \
           -p ${{ secrets.AZURE_CLIENT_SECRET }} \
           --tenant ${{ secrets.AZURE_TENANT_ID }}
       
+      # Disable Oryx Build
       - name: Disable Oryx Build
         run: |
           az webapp config appsettings set --name nonsoresumeapp --resource-group resumeresourcegroup --settings ENABLE_ORYX_BUILD=false   
@@ -32,12 +34,3 @@ jobs:
             --resource-group resumeresourcegroup \
             --name nonsoresumeapp \
             --src-path ./functionapp.zip
-
-      # Deploy frontend to Blob Storage
-      - name: Deploy Blob Storage
-        run: |
-          az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
-          az storage blob upload-batch \
-            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
-            --source ./frontend \  # Pointing to the correct frontend folder
-            --destination '$web'
