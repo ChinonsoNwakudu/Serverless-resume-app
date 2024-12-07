@@ -24,26 +24,18 @@ jobs:
       # Disable Oryx Build
       - name: Disable Oryx Build
         run: |
-          az webapp config appsettings set --name nonsoresumeapp --resource-group resumeresourcegroup --settings ENABLE_ORYX_BUILD=false   
+           az functionapp config appsettings set --name nonsoresumeapp --resource-group resumeresourcegroup --settings ENABLE_ORYX_BUILD=false   
       
      # Create Deployment Package
       - name: Create Deployment Package
         run: |
            zip -r functionapp.zip .
-
-     # Get Resource ID for the Web App
-      - name: Get Web App Resource ID
-        id: get-resource-id
-        run: |
-          webapp_id=$(az webapp show --name nonsoresumeapp --resource-group resumeresourcegroup --query id -o tsv)
-          echo "WEBAPP_ID=$webapp_id" >> $GITHUB_ENV      
       
       # Deploy Azure Function App
       - name: Deploy Azure Function App
         run: |
-          az webapp deploy \
+          az functionapp deployment source config-zip \
             --resource-group resumeresourcegroup \
             --name nonsoresumeapp \
-            --src-path "$(pwd)/functionapp.zip" \
-            --type zip \
+            --src "$(pwd)/functionapp.zip" \
             --debug
