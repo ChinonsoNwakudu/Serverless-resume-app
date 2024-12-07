@@ -9,3 +9,5 @@ test
 .python-version
 .python_packages
 .funcignore
+
+myvenv
