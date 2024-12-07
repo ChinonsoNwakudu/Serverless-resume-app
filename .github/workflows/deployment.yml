@@ -31,6 +31,13 @@ jobs:
         run: |
            zip -r functionapp.zip .
 
+     # Get Resource ID for the Web App
+      - name: Get Web App Resource ID
+        id: get-resource-id
+        run: |
+          webapp_id=$(az webapp show --name nonsoresumeapp --resource-group resumeresourcegroup --query id -o tsv)
+          echo "WEBAPP_ID=$webapp_id" >> $GITHUB_ENV      
+      
       # Deploy Azure Function App
       - name: Deploy Azure Function App
         run: |
