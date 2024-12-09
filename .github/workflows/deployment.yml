@@ -64,4 +64,4 @@ jobs:
           package: ./functionapp.zip
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
           scm-do-build-during-deployment: false
-          enable-oryx-build: false
+          enable-oryx-build: true
