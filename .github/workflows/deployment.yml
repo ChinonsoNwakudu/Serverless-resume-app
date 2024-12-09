@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # Set to the path of your Function App project
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './functionapp.zip' # Set to the path of your Function App project
   PYTHON_VERSION: '3.11' # Adjust to your Python version
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          zip -r release.zip ./* -x venv/\*
+          zip -r functionapp.zip . -x "./venv/*" "./.git/*" "./.github/*" "./*.zip"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -64,4 +64,5 @@ jobs:
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
           scm-do-build-during-deployment: true
-          enable-oryx-build: true
+        env:
+            ENABLE_ORYX_BUILD: true
